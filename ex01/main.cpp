@@ -18,5 +18,6 @@ int main(void)
 	horde = zombieHorde(30, "zombie");
 	for (int i = 0; i < 30; i++)
 		horde[i].announce();
+	delete [] horde;
 	return (0);
 }
