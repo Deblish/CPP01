@@ -16,11 +16,6 @@ Zombie::Zombie()
 {
 }
 
-// Zombie::Zombie(std::string name)
-// {
-// 	this->name = name;
-// }
-
 void Zombie::setName(std::string name)
 {
 	this->name = name;

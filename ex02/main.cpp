@@ -6,7 +6,7 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 13:12:37 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/24 13:12:38 by aapadill         ###   ########.fr       */
+/*   Updated: 2025/03/25 09:49:14 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int main(void)
 	std::cout << "Value of string: " << string << std::endl;
 	std::cout << "Value of stringPTR: " << *stringPTR << std::endl;
 	std::cout << "Value of stringREF: " << stringREF << std::endl;
-		
+
 	return (0);
 }
