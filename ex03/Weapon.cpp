@@ -18,7 +18,7 @@ Weapon::Weapon(std::string type) : _type(type)
 
 Weapon::~Weapon()
 {
-	std::cout << "Weapon destroyed" << std::endl;
+	std::cout << "(Weapon destroyed)" << std::endl;
 }
 
 const std::string &Weapon::getType()
