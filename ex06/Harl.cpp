@@ -6,7 +6,7 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:50:30 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/26 11:51:02 by aapadill         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:03:59 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,32 @@ void Harl::error(void)
 	std::cout << "This is unacceptable! I want to speak to the manager now" << std::endl;
 }
 
-void Harl::non_existent(void)
-{
-	std::cout << "\nYou're trying to complain about something, but you're not sure what exactly it is..\nhave you broke the matrix? Hmmm... *Cymbal monkey making noises in the background*" << std::endl;
-}
-
 void Harl::complain(std::string level)
 {
-	int i = -1;
+	int i = 0;
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*complaints[5])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::non_existent};
-	while (++i+1 && i < 4 && levels[i] != level);
-	return (this->*complaints[i])();
+	while (level != levels[i] && i < 4)
+		i++;
+	switch (i)
+	{
+		case (0):
+			std::cout << "[ " << levels[i++] << " ] "  << std::endl;
+			debug();
+			std::cout << std::endl;
+		case (1):
+			std::cout << "[ " << levels[i++] << " ] "  << std::endl;
+			info();
+			std::cout << std::endl;
+		case (2):
+			std::cout << "[ " << levels[i++] << " ] "  << std::endl;
+			warning();
+			std::cout << std::endl;
+		case (3):
+			std::cout << "[ " << levels[i] << " ] "  << std::endl;
+			error();
+			std::cout << std::endl;
+			break;
+		default:
+			std::cout << "[ STOP YAPPING MAN  ] "  << std::endl;
+	}
 }

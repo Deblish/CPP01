@@ -5,20 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 10:57:37 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/26 17:26:39 by aapadill         ###   ########.fr       */
+/*   Created: 2025/03/26 10:50:06 by aapadill          #+#    #+#             */
+/*   Updated: 2025/03/26 17:32:18 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-//add try catch and clean properly
-int main(void)
+//it will display all messages from this level and above!!
+int main(int argc, char **argv)
 {
-	Zombie *horde;
-	horde = zombieHorde(30, "zombie");
-	for (int i = 0; i < 30; i++)
-		horde[i].announce();
-	delete [] horde;
+	if (argc != 2)
+	{
+		std::cout << "Usage: ./harlFilter <level>" << std::endl;
+		return 0;
+	}
+	Harl harl;
+	harl.complain(argv[1]);
 	return (0);
 }

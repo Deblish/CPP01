@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 10:57:37 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/26 17:26:39 by aapadill         ###   ########.fr       */
+/*   Created: 2025/03/26 10:50:19 by aapadill          #+#    #+#             */
+/*   Updated: 2025/03/26 10:50:58 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
+#include <iostream>
 
-//add try catch and clean properly
-int main(void)
+class Harl
 {
-	Zombie *horde;
-	horde = zombieHorde(30, "zombie");
-	for (int i = 0; i < 30; i++)
-		horde[i].announce();
-	delete [] horde;
-	return (0);
-}
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+		void non_existent(void);
+
+	public:
+		Harl();
+		~Harl();
+		void complain(std::string level);
+};

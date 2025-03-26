@@ -6,7 +6,7 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:50:06 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/26 10:50:07 by aapadill         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:51:34 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int main(void)
 	harl.complain("INFO");
 	harl.complain("WARNING");
 	harl.complain("ERROR");
-	harl.complain("NON-EXISTENT-COMPLAIN");
+	harl.complain("MMMM");
 	return (0);
 }
