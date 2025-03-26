@@ -6,7 +6,7 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:10:30 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/25 15:58:51 by aapadill         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:44:35 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,25 @@ int main(int argc, char **argv)
 {
 	if (argc != 4)
 	{
-		std::cout << "Usage: ./sed_4_losers <filename> <find> <replace>" << std::endl;
-		return 1;
+		std::cerr << "Usage: ./sed_4_losers <filename> <find> <replace>" << std::endl;
+		return 0;
 	}
-	std::ifstream fin;
+	//if (argv[1]) //is directory
+	if (!*argv[2]) //if s1 is empty
+	{
+		std::cerr << "<find> cannot be empty" << std::endl;
+		return 0;
+	}
+	std::ifstream fin; //check if folder or empty
 	std::ofstream fout;
 	fin.open(argv[1]);
 	fout.open(std::string(argv[1]) + ".replace");
 	if (!fin.is_open() || !fout.is_open())
 	{
-		std::cout << "Error while opening any of the files, can't proceed" << std::endl;
+		std::cerr << "Error while opening any of the files, can't proceed" << std::endl;
 		return 1;
 	}
+	//if argv[2] == argv[3] do nothing?
 	std::string line;
 	while (getline(fin, line, '\0'))
 		fout << replaceString(line, argv[2], argv[3]);
