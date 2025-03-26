@@ -13,8 +13,10 @@
 #include <iostream>
 #include <fstream>
 
-std::string replaceString(std::string content, const std::string& s1, const std::string& s2) {
+std::string replaceString(std::string content, const std::string& s1, const std::string& s2)
+{
 	size_t pos = 0;
+
 	while ((pos = content.find(s1, pos)) != std::string::npos)
 	{
 		content.erase(pos, s1.length());
@@ -31,29 +33,17 @@ int main(int argc, char **argv)
 		std::cout << "Usage: ./sed_4_losers <filename> <find> <replace>" << std::endl;
 		return 1;
 	}
-	//std::cout << argv[0] << std::endl;
-	//std::cout << argv[1] << std::endl;
-	//std::cout << argv[2] << std::endl;
-	//std::cout << argv[3] << std::endl;
 	std::ifstream fin;
+	std::ofstream fout;
 	fin.open(argv[1]);
-
-	if (fin.is_open())
+	fout.open(std::string(argv[1]) + ".replace");
+	if (!fin.is_open() || !fout.is_open())
 	{
-		std::cout << "file opened!" << std::endl;
-		std::string line;
-		while (getline(fin, line, '\0')) //\n wont work because of the nature of getline
-		{
-			if (line.empty())
-				break ;
-			std::cout << line << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "error while opening " << argv[1] << std::endl;
+		std::cout << "Error while opening any of the files, can't proceed" << std::endl;
 		return 1;
 	}
-	fin.close();
+	std::string line;
+	while (getline(fin, line, '\0'))
+		fout << replaceString(line, argv[2], argv[3]);
 	return 0;
 }
