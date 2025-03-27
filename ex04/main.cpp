@@ -6,12 +6,13 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 12:10:30 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/26 18:44:35 by aapadill         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:14:59 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 
 std::string replaceString(std::string content, const std::string& s1, const std::string& s2)
 {
@@ -33,22 +34,30 @@ int main(int argc, char **argv)
 		std::cerr << "Usage: ./sed_4_losers <filename> <find> <replace>" << std::endl;
 		return 0;
 	}
-	//if (argv[1]) //is directory
 	if (!*argv[2]) //if s1 is empty
 	{
 		std::cerr << "<find> cannot be empty" << std::endl;
 		return 0;
 	}
 	std::ifstream fin; //check if folder or empty
-	std::ofstream fout;
 	fin.open(argv[1]);
-	fout.open(std::string(argv[1]) + ".replace");
-	if (!fin.is_open() || !fout.is_open())
+	if (!fin.is_open())
 	{
-		std::cerr << "Error while opening any of the files, can't proceed" << std::endl;
+		std::cerr << "Error while opening '" << argv[1] << "', can't proceed" << std::endl;
 		return 1;
 	}
-	//if argv[2] == argv[3] do nothing?
+	if (!std::filesystem::is_regular_file(argv[1]))
+	{
+		std::cerr << "File needs to be a regular file" << std::endl;
+		return 1;
+	}
+	std::ofstream fout;
+	fout.open(std::string(argv[1]) + ".replace");
+	if (!fout.is_open())
+	{
+		std::cerr << "Error while creating '" << argv[1] << ".replace', can't proceed" << std::endl;
+		return 1;
+	}
 	std::string line;
 	while (getline(fin, line, '\0'))
 		fout << replaceString(line, argv[2], argv[3]);

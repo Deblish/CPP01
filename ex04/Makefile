@@ -11,7 +11,7 @@ $(NAME):$(OBJFILES)
 	$(C++) $(C++_FLAGS) $(OBJFILES) -o $(NAME) 
 
 %.o: %.cpp
-	$(C++) $(C++_FLAGS) -c $< -o $@
+	$(C++) -std=c++17 $(C++_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJFILES)
