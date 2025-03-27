@@ -6,13 +6,12 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:57:37 by aapadill          #+#    #+#             */
-/*   Updated: 2025/03/26 18:11:39 by aapadill         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:34:03 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-//add try catch and clean properly
 int main(void)
 {
 	Zombie *horde = nullptr;
