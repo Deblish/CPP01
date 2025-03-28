@@ -15,14 +15,17 @@
 int main(void)
 {
 	Zombie *horde = nullptr;
-	horde = zombieHorde(30, "zombie");
-	if (!horde)
+
+	try
 	{
-		std::cout << "Allocation error" << std::endl;
-		return (1);
+		horde = zombieHorde(30, "zombie");
+		for (int i = 0; i < 30; i++)
+			horde[i].announce();
+		delete [] horde;
 	}
-	for (int i = 0; i < 30; i++)
-		horde[i].announce();
-	delete [] horde;
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

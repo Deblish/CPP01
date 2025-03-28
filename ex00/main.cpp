@@ -16,9 +16,15 @@ int main()
 {
 	randomChump("Stacky");
 
-	Zombie* heapy = newZombie("Heapy");
-	if (!heapy)
-		return 1;
-	heapy->announce();
-	delete heapy;
+	Zombie* heapy = nullptr;
+	try
+	{
+		heapy = newZombie("Heapy");
+		heapy->announce();
+		delete heapy;
+	}
+	catch (const std::bad_alloc&)
+	{
+		std::cerr << "New alloc error" << std::endl;
+	}
 }

@@ -39,8 +39,7 @@ int main(int argc, char **argv)
 		std::cerr << "<find> cannot be empty" << std::endl;
 		return 0;
 	}
-	std::ifstream fin; //check if folder or empty
-	fin.open(argv[1]);
+	std::ifstream fin(argv[1]); //check if empty
 	if (!fin.is_open())
 	{
 		std::cerr << "Error while opening '" << argv[1] << "', can't proceed" << std::endl;
@@ -51,8 +50,7 @@ int main(int argc, char **argv)
 		std::cerr << "File needs to be a regular file" << std::endl;
 		return 1;
 	}
-	std::ofstream fout;
-	fout.open(std::string(argv[1]) + ".replace");
+	std::ofstream fout(std::string(argv[1]) + ".replace");
 	if (!fout.is_open())
 	{
 		std::cerr << "Error while creating '" << argv[1] << ".replace', can't proceed" << std::endl;
